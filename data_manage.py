@@ -111,3 +111,6 @@ def load_visits(visits):
 
     except FileNotFoundError:
         pass
+
+
+def save_bills(bills
