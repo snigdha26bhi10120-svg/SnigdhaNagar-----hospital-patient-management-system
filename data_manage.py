@@ -35,3 +35,40 @@ def load_patients(patients):
 
     except FileNotFoundError:
         pass
+
+
+def save_doctors(doctors):
+    file = open("doctor_data.txt", "w")
+
+    for doctor in doctors:
+        file.write(
+            doctor["doctor_id"] + "|" +
+            doctor["name"] + "|" +
+            doctor["specialization"] + "|" +
+            doctor["phone"] + "\n"
+        )
+
+    file.close()
+
+
+def load_doctors(doctors):
+    try:
+        file = open("doctor_data.txt", "r")
+
+        for line in file:
+            data = line.strip().split("|")
+
+            if len(data) == 4:
+                doctor = {
+                    "doctor_id": data[0],
+                    "name": data[1],
+                    "specialization": data[2],
+                    "phone": data[3]
+                }
+
+                doctors.append(doctor)
+
+        file.close()
+
+    except FileNotFoundError:
+        pass
