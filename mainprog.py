@@ -9,7 +9,9 @@ from data_manage import (
     save_doctors,
     load_doctors,
     save_visits,
-    load_visits
+    load_visits,
+    save_bills,
+    load_bills
 )
 
 
@@ -22,6 +24,7 @@ bills = []
 load_patients(patients)
 load_doctors(doctors)
 load_visits(visits)
+load_bills(bills)
 
 
 print("=" * 45)
@@ -129,6 +132,7 @@ while True:
 
         if billing_choice == "1":
             create_bill(bills)
+            save_bills(bills)
 
         elif billing_choice == "2":
             view_bills(bills)
@@ -162,6 +166,7 @@ while True:
         save_patients(patients)
         save_doctors(doctors)
         save_visits(visits)
+        save_bills(bills)
 
         print("\nThank you for using the Hospital Patient Management System.")
         break
