@@ -1,6 +1,8 @@
 from Handlefile import add_patient, view_patients, search_patient
+from doctor_manage import add_doctor, view_doctors, search_doctor
 
 patients = []
+doctors = []
 
 print("=" * 45)
 print("HOSPITAL PATIENT MANAGEMENT SYSTEM")
@@ -45,7 +47,28 @@ while True:
         print("\nVisit Management selected.")
 
     elif choice == "3":
-        print("\nDoctor Management selected.")
+        print("\n--- Doctor Management ---")
+        print("1. Add Doctor")
+        print("2. View Doctors")
+        print("3. Search Doctor")
+        print("4. Back to Main Menu")
+
+        doctor_choice = input("\nEnter your choice: ")
+
+        if doctor_choice == "1":
+            add_doctor(doctors)
+
+        elif doctor_choice == "2":
+            view_doctors(doctors)
+
+        elif doctor_choice == "3":
+            search_doctor(doctors)
+
+        elif doctor_choice == "4":
+            continue
+
+        else:
+            print("\nInvalid choice.")
 
     elif choice == "4":
         print("\nBilling selected.")
