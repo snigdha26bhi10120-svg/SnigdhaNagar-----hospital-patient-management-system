@@ -7,7 +7,9 @@ from data_manage import (
     save_patients,
     load_patients,
     save_doctors,
-    load_doctors
+    load_doctors,
+    save_visits,
+    load_visits
 )
 
 
@@ -19,6 +21,7 @@ bills = []
 # Load saved records when the program starts
 load_patients(patients)
 load_doctors(doctors)
+load_visits(visits)
 
 
 print("=" * 45)
@@ -74,6 +77,7 @@ while True:
 
         if visit_choice == "1":
             add_visit(visits)
+            save_visits(visits)
 
         elif visit_choice == "2":
             view_visits(visits)
@@ -157,6 +161,7 @@ while True:
     elif choice == "6":
         save_patients(patients)
         save_doctors(doctors)
+        save_visits(visits)
 
         print("\nThank you for using the Hospital Patient Management System.")
         break
