@@ -1,3 +1,5 @@
+from patientmanage import add_patient
+patients=[]
 print("=" * 45)
 print("\n")
 print("HOSPITAL PATIENT MANAGEMENT SYSTEM")
@@ -15,8 +17,9 @@ while True:
     choice = input("\nEnter your choice: ")
 
     if choice == "1":
-        print("\nPatient Management selected.")
-
+    print("\nPatient Management selected.")
+    add_patient(patients)
+    
     elif choice == "2":
         print("\nVisit Management selected.")
 
