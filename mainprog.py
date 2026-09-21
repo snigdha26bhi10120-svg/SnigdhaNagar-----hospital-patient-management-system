@@ -1,5 +1,7 @@
-from patientmanage import add_patient
-patients=[]
+from patientmanage import add_patient, view_patients
+
+patients = []
+
 print("=" * 45)
 print("\n")
 print("HOSPITAL PATIENT MANAGEMENT SYSTEM")
@@ -17,9 +19,25 @@ while True:
     choice = input("\nEnter your choice: ")
 
     if choice == "1":
-    print("\nPatient Management selected.")
-    add_patient(patients)
-    
+        print("\n--- Patient Management ---")
+        print("1. Add Patient")
+        print("2. View Patients")
+        print("3. Back to Main Menu")
+
+        patient_choice = input("\nEnter your choice: ")
+
+        if patient_choice == "1":
+            add_patient(patients)
+
+        elif patient_choice == "2":
+            view_patients(patients)
+
+        elif patient_choice == "3":
+            continue
+
+        else:
+            print("\nInvalid choice.")
+
     elif choice == "2":
         print("\nVisit Management selected.")
 
