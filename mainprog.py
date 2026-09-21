@@ -1,8 +1,10 @@
 from Handlefile import add_patient, view_patients, search_patient
 from doctor_manage import add_doctor, view_doctors, search_doctor
+from visit_manage import add_visit, view_visits, search_visit
 
 patients = []
 doctors = []
+visits = []
 
 print("=" * 45)
 print("HOSPITAL PATIENT MANAGEMENT SYSTEM")
@@ -19,6 +21,7 @@ while True:
 
     choice = input("\nEnter your choice: ")
 
+    # Patient Management
     if choice == "1":
         print("\n--- Patient Management ---")
         print("1. Add Patient")
@@ -43,9 +46,32 @@ while True:
         else:
             print("\nInvalid choice.")
 
+    # Visit Management
     elif choice == "2":
-        print("\nVisit Management selected.")
+        print("\n--- Visit Management ---")
+        print("1. Add Visit")
+        print("2. View Visits")
+        print("3. Search Visit")
+        print("4. Back to Main Menu")
 
+        visit_choice = input("\nEnter your choice: ")
+
+        if visit_choice == "1":
+            add_visit(visits)
+
+        elif visit_choice == "2":
+            view_visits(visits)
+
+        elif visit_choice == "3":
+            search_visit(visits)
+
+        elif visit_choice == "4":
+            continue
+
+        else:
+            print("\nInvalid choice.")
+
+    # Doctor Management
     elif choice == "3":
         print("\n--- Doctor Management ---")
         print("1. Add Doctor")
@@ -70,12 +96,19 @@ while True:
         else:
             print("\nInvalid choice.")
 
+    # Billing
     elif choice == "4":
-        print("\nBilling selected.")
+        print("\n--- Billing ---")
+        print("Billing module will be added soon.")
 
+    # Statistics
     elif choice == "5":
-        print("\nStatistics selected.")
+        print("\n--- Statistics ---")
+        print("Total Patients:", len(patients))
+        print("Total Doctors:", len(doctors))
+        print("Total Visits:", len(visits))
 
+    # Exit
     elif choice == "6":
         print("\nThank you for using the Hospital Patient Management System.")
         break
