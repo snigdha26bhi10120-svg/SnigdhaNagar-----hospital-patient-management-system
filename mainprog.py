@@ -2,11 +2,17 @@ from Handlefile import add_patient, view_patients, search_patient
 from doctor_manage import add_doctor, view_doctors, search_doctor
 from visit_manage import add_visit, view_visits, search_visit
 from billing import create_bill, view_bills, search_bill
+from data_manage import save_patients, load_patients
+
 
 patients = []
 doctors = []
 visits = []
 bills = []
+
+# Load previously saved patient records
+load_patients(patients)
+
 
 print("=" * 45)
 print("HOSPITAL PATIENT MANAGEMENT SYSTEM")
@@ -35,6 +41,7 @@ while True:
 
         if patient_choice == "1":
             add_patient(patients)
+            save_patients(patients)
 
         elif patient_choice == "2":
             view_patients(patients)
@@ -100,4 +107,50 @@ while True:
 
     # Billing
     elif choice == "4":
-       
+        print("\n--- Billing ---")
+        print("1. Create Bill")
+        print("2. View Bills")
+        print("3. Search Bill")
+        print("4. Back to Main Menu")
+
+        billing_choice = input("\nEnter your choice: ")
+
+        if billing_choice == "1":
+            create_bill(bills)
+
+        elif billing_choice == "2":
+            view_bills(bills)
+
+        elif billing_choice == "3":
+            search_bill(bills)
+
+        elif billing_choice == "4":
+            continue
+
+        else:
+            print("\nInvalid choice.")
+
+    # Statistics
+    elif choice == "5":
+        print("\n--- Hospital Statistics ---")
+
+        total_amount = 0
+
+        for bill in bills:
+            total_amount = total_amount + bill["total"]
+
+        print("Total Patients:", len(patients))
+        print("Total Doctors:", len(doctors))
+        print("Total Visits:", len(visits))
+        print("Total Bills:", len(bills))
+        print("Total Billing Amount: ₹", total_amount)
+
+    # Exit
+    elif choice == "6":
+        save_patients(patients)
+
+        print("\nThank you for using the Hospital Patient Management System.")
+        break
+
+    else:
+        print("\nInvalid choice. Please enter a number from 1 to 6.")
