@@ -72,3 +72,42 @@ def load_doctors(doctors):
 
     except FileNotFoundError:
         pass
+
+
+def save_visits(visits):
+    file = open("visit_data.txt", "w")
+
+    for visit in visits:
+        file.write(
+            visit["visit_id"] + "|" +
+            visit["patient_id"] + "|" +
+            visit["doctor_id"] + "|" +
+            visit["visit_date"] + "|" +
+            visit["reason"] + "\n"
+        )
+
+    file.close()
+
+
+def load_visits(visits):
+    try:
+        file = open("visit_data.txt", "r")
+
+        for line in file:
+            data = line.strip().split("|")
+
+            if len(data) == 5:
+                visit = {
+                    "visit_id": data[0],
+                    "patient_id": data[1],
+                    "doctor_id": data[2],
+                    "visit_date": data[3],
+                    "reason": data[4]
+                }
+
+                visits.append(visit)
+
+        file.close()
+
+    except FileNotFoundError:
+        pass
