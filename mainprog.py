@@ -1,9 +1,8 @@
-from patientmanage import add_patient, view_patients
+from Handlefile import add_patient, view_patients, search_patient
 
 patients = []
 
 print("=" * 45)
-print("\n")
 print("HOSPITAL PATIENT MANAGEMENT SYSTEM")
 print("=" * 45)
 
@@ -22,7 +21,8 @@ while True:
         print("\n--- Patient Management ---")
         print("1. Add Patient")
         print("2. View Patients")
-        print("3. Back to Main Menu")
+        print("3. Search Patient")
+        print("4. Back to Main Menu")
 
         patient_choice = input("\nEnter your choice: ")
 
@@ -33,6 +33,9 @@ while True:
             view_patients(patients)
 
         elif patient_choice == "3":
+            search_patient(patients)
+
+        elif patient_choice == "4":
             continue
 
         else:
