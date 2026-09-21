@@ -2,7 +2,13 @@ from Handlefile import add_patient, view_patients, search_patient
 from doctor_manage import add_doctor, view_doctors, search_doctor
 from visit_manage import add_visit, view_visits, search_visit
 from billing import create_bill, view_bills, search_bill
-from data_manage import save_patients, load_patients
+
+from data_manage import (
+    save_patients,
+    load_patients,
+    save_doctors,
+    load_doctors
+)
 
 
 patients = []
@@ -10,8 +16,9 @@ doctors = []
 visits = []
 bills = []
 
-# Load previously saved patient records
+# Load saved records when the program starts
 load_patients(patients)
+load_doctors(doctors)
 
 
 print("=" * 45)
@@ -92,6 +99,7 @@ while True:
 
         if doctor_choice == "1":
             add_doctor(doctors)
+            save_doctors(doctors)
 
         elif doctor_choice == "2":
             view_doctors(doctors)
@@ -148,6 +156,7 @@ while True:
     # Exit
     elif choice == "6":
         save_patients(patients)
+        save_doctors(doctors)
 
         print("\nThank you for using the Hospital Patient Management System.")
         break
