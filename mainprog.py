@@ -1,10 +1,12 @@
 from Handlefile import add_patient, view_patients, search_patient
 from doctor_manage import add_doctor, view_doctors, search_doctor
 from visit_manage import add_visit, view_visits, search_visit
+from billing import create_bill, view_bills, search_bill
 
 patients = []
 doctors = []
 visits = []
+bills = []
 
 print("=" * 45)
 print("HOSPITAL PATIENT MANAGEMENT SYSTEM")
@@ -98,20 +100,4 @@ while True:
 
     # Billing
     elif choice == "4":
-        print("\n--- Billing ---")
-        print("Billing module will be added soon.")
-
-    # Statistics
-    elif choice == "5":
-        print("\n--- Statistics ---")
-        print("Total Patients:", len(patients))
-        print("Total Doctors:", len(doctors))
-        print("Total Visits:", len(visits))
-
-    # Exit
-    elif choice == "6":
-        print("\nThank you for using the Hospital Patient Management System.")
-        break
-
-    else:
-        print("\nInvalid choice. Please enter a number from 1 to 6.")
+       
