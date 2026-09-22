@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Hospital system runtime data
+patient_data.txt
+doctor_data.txt
+visit_data.txt
+billing_data.txt
