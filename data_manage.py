@@ -113,4 +113,42 @@ def load_visits(visits):
         pass
 
 
-def save_bills(bills
+def save_bills(bills):
+    file = open("billing_data.txt", "w")
+
+    for bill in bills:
+        file.write(
+            bill["bill_id"] + "|" +
+            bill["patient_id"] + "|" +
+            str(bill["consultation_fee"]) + "|" +
+            str(bill["medicine_charge"]) + "|" +
+            str(bill["other_charge"]) + "|" +
+            str(bill["total"]) + "\n"
+        )
+
+    file.close()
+
+
+def load_bills(bills):
+    try:
+        file = open("billing_data.txt", "r")
+
+        for line in file:
+            data = line.strip().split("|")
+
+            if len(data) == 6:
+                bill = {
+                    "bill_id": data[0],
+                    "patient_id": data[1],
+                    "consultation_fee": float(data[2]),
+                    "medicine_charge": float(data[3]),
+                    "other_charge": float(data[4]),
+                    "total": float(data[5])
+                }
+
+                bills.append(bill)
+
+        file.close()
+
+    except FileNotFoundError:
+        pass
